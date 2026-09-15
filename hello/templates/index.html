@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock title %}
+{% block body %}
+<div class="container mt-2">
+  <div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=1600&h=600&q=80" class="d-block w-100" alt="Ice cream cone with sprinkles">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Ice Cream Cone</h5>
+        <p>Freshly served ice cream with colorful sprinkles.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1570197788417-0e82375c9371?auto=format&fit=crop&w=1600&h=600&q=80" class="d-block w-100" alt="Scoops of ice cream">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Ice Cream Scoops</h5>
+        <p>Choose from delicious flavors and creamy scoops.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=1600&h=600&q=80" class="d-block w-100" alt="Ice cream dessert">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Sweet Dessert</h5>
+        <p>A perfect ice cream treat for every occasion.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>  {% endblock body %}
