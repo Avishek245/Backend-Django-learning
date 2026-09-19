@@ -1,0 +1,98 @@
+<svg width="900" height="900" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ice cream thumbnail">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f6efe8"/>
+      <stop offset="100%" stop-color="#f1d5bc"/>
+    </linearGradient>
+    <linearGradient id="cone" x1="0" x2="1">
+      <stop offset="0%" stop-color="#d88c4d"/>
+      <stop offset="100%" stop-color="#b76c2d"/>
+    </linearGradient>
+    <radialGradient id="scoop1" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#fffefb"/>
+      <stop offset="100%" stop-color="#f4f0eb"/>
+    </radialGradient>
+    <radialGradient id="scoop2" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#f9d9d6"/>
+      <stop offset="100%" stop-color="#f0a7b7"/>
+    </radialGradient>
+    <radialGradient id="scoop3" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#f8f1d8"/>
+      <stop offset="100%" stop-color="#f0d78b"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="900" height="900" fill="url(#bg)"/>
+
+  <g opacity="0.15">
+    <circle cx="160" cy="120" r="80" fill="#b39d7d"/>
+    <circle cx="730" cy="150" r="90" fill="#c08a62"/>
+    <circle cx="200" cy="760" r="120" fill="#c4885e"/>
+  </g>
+
+  <g>
+    <path d="M250 520 L650 520 L610 900 L290 900 Z" fill="url(#cone)"/>
+    <path d="M300 520 C330 480, 360 440, 450 430 C540 420, 600 470, 630 520" fill="none" stroke="#c57b3d" stroke-width="18" stroke-linecap="round"/>
+    <path d="M310 540 L600 540" stroke="#e6a26d" stroke-width="20" opacity="0.6"/>
+  </g>
+
+  <g>
+    <path d="M465 315 C530 235, 610 250, 640 330 C670 410, 640 500, 545 510 C455 520, 410 450, 415 380 C420 345, 440 330, 465 315 Z" fill="url(#scoop1)"/>
+    <path d="M340 350 C390 270, 470 250, 505 330 C535 395, 500 470, 430 500 C362 530, 290 485, 300 402 C305 385, 314 368, 340 350 Z" fill="url(#scoop2)"/>
+    <path d="M515 350 C575 285, 640 295, 675 360 C705 420, 680 503, 610 520 C542 536, 472 500, 485 435 C490 410, 500 380, 515 350 Z" fill="url(#scoop3)"/>
+  </g>
+
+  <g opacity="0.75">
+    <ellipse cx="465" cy="262" rx="60" ry="18" fill="#fff"/>
+    <ellipse cx="382" cy="294" rx="52" ry="16" fill="#fff"/>
+    <ellipse cx="590" cy="292" rx="56" ry="16" fill="#fff"/>
+  </g>
+
+  <g fill="#968d7d" opacity="0.8">
+    <circle cx="380" cy="420" r="10"/>
+    <circle cx="415" cy="468" r="9"/>
+    <circle cx="515" cy="390" r="10"/>
+    <circle cx="570" cy="455" r="11"/>
+    <circle cx="393" cy="500" r="8"/>
+    <circle cx="644" cy="425" r="12"/>
+    <circle cx="610" cy="350" r="10"/>
+    <circle cx="335" cy="380" r="9"/>
+  </g>
+
+  <g fill="#f5c2d5">
+    <circle cx="300" cy="250" r="12"/>
+    <circle cx="350" cy="190" r="10"/>
+    <circle cx="405" cy="165" r="12"/>
+    <circle cx="463" cy="180" r="11"/>
+    <circle cx="540" cy="160" r="10"/>
+    <circle cx="610" cy="195" r="12"/>
+    <circle cx="670" cy="250" r="11"/>
+    <circle cx="720" cy="300" r="10"/>
+  </g>
+
+  <g fill="#f7e9a3">
+    <circle cx="210" cy="220" r="11"/>
+    <circle cx="270" cy="160" r="10"/>
+    <circle cx="615" cy="145" r="11"/>
+    <circle cx="690" cy="165" r="9"/>
+  </g>
+
+  <g fill="#6b4732" opacity="0.9">
+    <ellipse cx="450" cy="660" rx="120" ry="24"/>
+    <ellipse cx="450" cy="690" rx="150" ry="26"/>
+  </g>
+
+  <g>
+    <path d="M420 535 C420 575, 435 595, 452 605 C474 610, 500 610, 520 595 C545 575, 560 540, 560 520 L420 520 Z" fill="#583423" opacity="0.8"/>
+  </g>
+
+  <g>
+    <circle cx="300" cy="225" r="18" fill="#f9e5d9" opacity="0.8"/>
+    <circle cx="660" cy="240" r="16" fill="#f9e5d9" opacity="0.8"/>
+    <circle cx="730" cy="500" r="20" fill="#f9e5d9" opacity="0.7"/>
+  </g>
+
+  <g>
+    <text x="50%" y="95" text-anchor="middle" font-size="62" font-family="Arial, sans-serif" font-weight="700" fill="#6d3f2d">ICE CREAM</text>
+  </g>
+</svg>

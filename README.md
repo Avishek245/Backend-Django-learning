@@ -1,29 +1,31 @@
 # Learning Django: userproject
 
-A small Django learning project. The project package is `userproject` and the application is `home`.
+A small Django learning project. The Git repository contains the Django project in `userproject/` and an earlier practice project in `hello/`.
 
-## Current project structure
+## Repository structure
 
 ```text
-userproject/
-|-- manage.py
-|-- db.sqlite3              # local database; ignored by Git
-|-- home/                   # application code
-|   |-- models.py           # database models
-|   |-- admin.py            # admin registrations
-|   |-- urls.py             # app routes
-|   |-- views.py            # request handlers
-|   `-- migrations/         # database migration files
-|-- templates/              # HTML templates
-|-- static/                 # CSS, JavaScript, and images
-|-- userproject/            # project settings and root URLs
+Django/
+|-- userproject/             # current Django project
+|   |-- manage.py
+|   |-- home/                # application code
+|   |   |-- models.py        # database models
+|   |   |-- admin.py         # admin registrations
+|   |   |-- urls.py          # app routes
+|   |   |-- views.py         # request handlers
+|   |   `-- migrations/      # database migration files
+|   |-- templates/           # HTML templates
+|   |-- static/              # CSS, JavaScript, and images
+|   |-- userproject/         # settings and root URLs
+|   `-- db.sqlite3          # local database, ignored by Git
+|-- hello/                   # earlier Django practice project
 |-- .gitignore
 `-- README.md
 ```
 
 ## First setup on Windows PowerShell
 
-Run these commands from the folder that contains `manage.py`:
+Run these commands from the repository root:
 
 ```powershell
 cd E:\Django\userproject
@@ -49,6 +51,7 @@ py manage.py check
 ## Run the development server
 
 ```powershell
+cd E:\Django\userproject
 py manage.py runserver
 ```
 
@@ -56,11 +59,12 @@ Open <http://127.0.0.1:8000/> in a browser. Stop the server with `Ctrl+C`.
 
 ## Database and migrations
 
-This project currently uses SQLite. Django stores the database in `db.sqlite3`, configured in `userproject/settings.py`.
+This project uses SQLite. Django stores the database in `userproject/db.sqlite3`, configured in `userproject/userproject/settings.py`.
 
-When you create or change a model in `home/models.py`, create migration files and apply them:
+When you create or change a model in `userproject/home/models.py`, create migration files and apply them:
 
 ```powershell
+cd E:\Django\userproject
 py manage.py makemigrations
 py manage.py migrate
 ```
@@ -71,20 +75,21 @@ Useful database commands:
 # Show migration status
 py manage.py showmigrations
 
-# Open the SQLite database shell (if sqlite3 is installed)
+# Open the SQLite database shell, if sqlite3 is installed
 py manage.py dbshell
 
 # Create a blank migration for a manual migration
 py manage.py makemigrations --empty home
 ```
 
-Do not delete migration files that have already been shared with a team. Migration files describe how Django changes the database schema and should be committed to Git. The local `db.sqlite3` file is ignored because it is generated data.
+Migration files should be committed to Git. The local `db.sqlite3` file is ignored because it is generated data.
 
 ## Create an administrator
 
 Create a user for `/admin/`:
 
 ```powershell
+cd E:\Django\userproject
 py manage.py createsuperuser
 ```
 
@@ -92,7 +97,7 @@ Start the server and visit <http://127.0.0.1:8000/admin/>.
 
 ## Add a database model
 
-Example model in `home/models.py`:
+Example model in `userproject/home/models.py`:
 
 ```python
 from django.db import models
@@ -110,13 +115,14 @@ class Note(models.Model):
 After adding or changing the model:
 
 ```powershell
+cd E:\Django\userproject
 py manage.py makemigrations home
 py manage.py migrate
 ```
 
 ## Register a model in the Django admin
 
-Add this to `home/admin.py`:
+Add this to `userproject/home/admin.py`:
 
 ```python
 from django.contrib import admin
@@ -130,14 +136,14 @@ class NoteAdmin(admin.ModelAdmin):
     search_fields = ("title", "body")
 ```
 
-Then run the server and open `/admin/`. The model will appear after migrations have been applied and you have logged in as a superuser.
+Then run the server and open `/admin/`. The model appears after migrations have been applied and you log in as a superuser.
 
 ## URLs, views, and templates
 
 The project URL file includes the app routes:
 
 ```python
-# userproject/urls.py
+# userproject/userproject/urls.py
 path("", include("home.urls"))
 ```
 
@@ -145,10 +151,19 @@ The current app routes are:
 
 ```text
 /          -> home.views.index
-/login     -> home.views.login
-/logout    -> home.views.logout
+/login     -> home.views.loginUser
+/logout    -> home.views.logoutUser
 /admin/    -> Django admin
 ```
+
+The home page requires authentication. Anonymous users who visit `/` are
+redirected to `/login`. After a successful login, the user is authenticated
+and redirected back to `/`. Logging out clears the session and redirects to
+`/login`.
+
+The `/login` and `/logout` routes currently do not include a trailing slash.
+Use `/login` and `/logout`, not `/login/` or `/logout/`, unless the patterns in
+`userproject/home/urls.py` are changed to include trailing slashes.
 
 A view renders a template with Django's `render` helper:
 
@@ -160,7 +175,7 @@ def index(request):
     return render(request, "index.html")
 ```
 
-Templates are stored in the top-level `templates/` directory and configured in `userproject/settings.py`:
+Templates are stored in `userproject/templates/` and configured in `userproject/userproject/settings.py`:
 
 ```python
 "DIRS": [BASE_DIR / "templates"]
@@ -168,7 +183,7 @@ Templates are stored in the top-level `templates/` directory and configured in `
 
 ## Static files
 
-Static files belong in the top-level `static/` directory. The project currently uses:
+Static files belong in `userproject/static/`. The project currently uses:
 
 ```python
 STATIC_URL = "static/"
@@ -185,6 +200,8 @@ In a template, load static files like this:
 ## Useful Django commands
 
 ```powershell
+cd E:\Django\userproject
+
 # List all management commands
 py manage.py help
 
@@ -200,15 +217,19 @@ py manage.py collectstatic
 
 ## Git workflow
 
+Run these commands from `E:\Django`:
+
 ```powershell
+cd E:\Django
 git init
 git add .
 git status
 git commit -m "Start Django learning project"
+git push
 ```
 
-The `.gitignore` excludes the virtual environment, Python cache files, `db.sqlite3`, secrets, IDE files, and build output. Migration files, source code, templates, and static source files remain trackable.
+The root `.gitignore` excludes virtual environments, Python cache files, SQLite databases, secrets, IDE files, and build output. Migration files, source code, templates, and static source files remain trackable.
 
 ## Important security note
 
-Before deploying, move `SECRET_KEY` out of `userproject/settings.py`, set `DEBUG = False`, configure `ALLOWED_HOSTS`, and use environment variables for secrets. Never commit real passwords, API keys, or production database credentials.
+Before deploying, move `SECRET_KEY` out of `userproject/userproject/settings.py`, set `DEBUG = False`, configure `ALLOWED_HOSTS`, and use environment variables for secrets. Never commit real passwords, API keys, or production database credentials.
